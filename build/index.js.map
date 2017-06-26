@@ -1,0 +1,1 @@
+{"version":3,"sources":["../src/index.js"],"names":["Publish"],"mappings":";;;;;;;AAAA;;;;;;QAESA,O;kBAEM;AACbA;AADa,C","file":"index.js","sourcesContent":["import Publish from './tasks/Publish';\n\nexport { Publish };\n\nexport default {\n  Publish\n};\n"]}
