@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/optimize/evaluate.js"],"names":["evaluate","path","evaluates"],"mappings":";;;;;AAAA,SAASA,QAAT,CAAkBC,IAAlB,EAAwB;AACtB,QAAMC,YAAYD,KAAKD,QAAL,EAAlB;AACA,SAAOE,SAAP;AACD;;kBAEcF,Q","file":"evaluate.js","sourcesContent":["function evaluate(path) {\n  const evaluates = path.evaluate();\n  return evaluates;\n}\n\nexport default evaluate;\n"]}
