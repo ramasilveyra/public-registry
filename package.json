@@ -1,0 +1,100 @@
+{
+  "name": "gitpkg",
+  "version": "1.0.0-beta.3",
+  "description": "Publish packages as git tags",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "babel src -d build -s",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s",
+    "clean": "del ./build",
+    "lint": "eslint .",
+    "prepare": "husky install",
+    "prepublish": "yarn run clean && yarn run build",
+    "test-ci-partial": "yarn run test-coverage",
+    "test-ci": "yarn run lint && yarn run test-ci-partial && codecov",
+    "test-coverage": "yarn run jest -- --coverage",
+    "test": "jest"
+  },
+  "author": {
+    "name": "Ramiro Silveyra d'Avila",
+    "twitter": "ramasilveyra"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=10.12.0"
+  },
+  "bin": "./bin/gitpkg.js",
+  "files": [
+    "bin",
+    "build"
+  ],
+  "repository": "git@github.com:ramasilveyra/gitpkg.git",
+  "keywords": [
+    "git",
+    "packages",
+    "registry",
+    "modules"
+  ],
+  "dependencies": {
+    "bluebird": "^3.7.2",
+    "chalk": "^4.1.2",
+    "del": "^6.1.1",
+    "end-of-stream": "^1.4.4",
+    "execa": "^5.1.1",
+    "find-up": "^5.0.0",
+    "git-remote-origin-url": "^3.1.0",
+    "make-dir": "^3.0.2",
+    "ora": "^5.4.1",
+    "semver": "^7.1.3",
+    "tar-fs": "^2.0.1",
+    "yargs": "^17.5.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/eslint-parser": "^7.18.2",
+    "@babel/preset-env": "^7.9.0",
+    "babel-plugin-dynamic-import-node": "^2.3.0",
+    "codecov": "^3.6.5",
+    "conventional-changelog-cli": "^2.0.31",
+    "del-cli": "^4.0.1",
+    "eslint": "^8.17.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.20.2",
+    "folder-hash": "^4.0.2",
+    "husky": "^8.0.1",
+    "jest": "^28.1.0",
+    "lint-staged": "^13.0.0",
+    "prettier": "^2.0.2"
+  },
+  "gitpkg": {
+    "registry": "git@github.com:ramasilveyra/public-registry.git"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!**/node_modules/**",
+      "!**/build/**",
+      "!**/bin/**",
+      "!**/coverage/**"
+    ],
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/*.test.js"
+    ]
+  },
+  "lint-staged": {
+    "*.js": "eslint --cache --fix",
+    "*.{js,css,md}": "prettier --write"
+  },
+  "prettier": {
+    "trailingComma": "none",
+    "tabWidth": 2,
+    "semi": true,
+    "singleQuote": true,
+    "printWidth": 100,
+    "endOfLine": "lf",
+    "arrowParens": "avoid"
+  }
+}
